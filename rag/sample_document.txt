@@ -1,0 +1,24 @@
+Sample shop policies (fictional practice document)
+
+Refund policy:
+Customers can request a refund within 30 days of purchase.
+The item must be unused, and a receipt is required.
+
+Delivery policy:
+Standard delivery takes 3 to 5 business days.
+Express delivery takes 1 to 2 business days.
+
+Support hours:
+Customer support is available Monday to Friday, from 9 AM to 6 PM.
+
+
+Option 1: Expanded Shop Policies Table
+
+This version includes standard additional policies (like international shipping and exchanges) to make it more comprehensive.
+
+Policy Type	Options & Details	Requirements / Availability
+Refunds & Exchanges	30-day return window	Item must be unused with original receipt
+Standard Delivery	3 to 5 business days	Free on orders over ₹999
+Express Delivery	1 to 2 business days	Extra charges apply at checkout
+Support Hours	Monday to Friday	9:00 AM to 6:00 PM (IST)
+International Shipping	7 to 14 business days	Available for select countries
