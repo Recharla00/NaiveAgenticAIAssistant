@@ -2,6 +2,14 @@
 
 A beginner Python project for learning Retrieval-Augmented Generation (RAG), each small step at a time.
 
+The `rag` folder contains the RAG lessons below. The new [LLM evaluation guide](llm/README.md) explains how to run prompts against local Ollama, grade answers, and save reports.
+
+```powershell
+python llm/01_evaluate_llm.py --dry-run
+python llm/01_evaluate_llm.py --case arithmetic
+python llm/01_evaluate_llm.py
+```
+
 RAG finds relevant information in your documents, adds that information to a prompt, and asks a language model to answer using it. It does not train the model or permanently teach it your document.
 
 ```text

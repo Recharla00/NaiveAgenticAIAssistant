@@ -1,0 +1,37 @@
+[
+  {
+    "id": "arithmetic",
+    "task": "Basic correctness",
+    "prompt": "What is 2 + 3? Reply with only the number, without punctuation or explanation.",
+    "check": "exact",
+    "expected": "5"
+  },
+  {
+    "id": "sentiment",
+    "task": "Follow an output instruction",
+    "prompt": "Classify the sentiment of: 'I love this product; it works perfectly!' Reply with exactly one label: positive, negative, or neutral. No explanation.",
+    "check": "exact",
+    "expected": "positive"
+  },
+  {
+    "id": "context_answer",
+    "task": "Answer from supplied context",
+    "prompt": "Use only this context: Customers may request a refund within 30 days of purchase. Question: Within how many days can a customer request a refund? Reply with only the number, without punctuation or explanation.",
+    "check": "exact",
+    "expected": "30"
+  },
+  {
+    "id": "missing_information",
+    "task": "Acknowledge missing information",
+    "prompt": "Use only this context: The shop opens at 9 AM and closes at 6 PM. Question: What is the shop owner's name? If the context does not contain the answer, reply with exactly UNKNOWN. Do not guess or explain.",
+    "check": "exact",
+    "expected": "UNKNOWN"
+  },
+  {
+    "id": "json_extraction",
+    "task": "Produce valid structured output",
+    "prompt": "Extract the name and city from: 'Asha lives in Pune.' Reply with a JSON object containing exactly the keys name and city, with string values. Do not include Markdown fences or any explanation.",
+    "check": "json",
+    "expected": {"name": "Asha", "city": "Pune"}
+  }
+]
