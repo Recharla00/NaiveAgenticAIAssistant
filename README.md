@@ -1,6 +1,6 @@
-# Learn RAG in Baby Steps
+# Learn RAG in Step by step..
 
-A beginner Python project for learning Retrieval-Augmented Generation (RAG), one small step at a time.
+A beginner Python project for learning Retrieval-Augmented Generation (RAG), each small step at a time.
 
 RAG finds relevant information in your documents, adds that information to a prompt, and asks a language model to answer using it. It does not train the model or permanently teach it your document.
 
