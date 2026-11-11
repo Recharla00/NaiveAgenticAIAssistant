@@ -1,4 +1,4 @@
-# LLM evaluations in baby steps
+# LLM evaluations
 
 An **eval** is a repeatable check of a model's response. We define the input and expected result before asking the model, then compare its actual answer with that expectation.
 
