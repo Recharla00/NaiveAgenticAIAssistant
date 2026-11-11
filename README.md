@@ -2,7 +2,29 @@
 
 A beginner Python project for learning Retrieval-Augmented Generation (RAG), each small step at a time.
 
-The `rag` folder contains the RAG lessons below. The new [LLM evaluation guide](llm/README.md) explains how to run prompts against local Ollama, grade answers, and save reports.
+## Learning levels
+
+```text
+AgenticAIProject/
+├── rag/
+│   ├── basic_rag/
+│   ├── intermediate_rag/
+│   └── advanced_rag/
+├── llm/
+└── README.md
+```
+
+Run all commands from the project root. Basic RAG can use the root `.venv`; intermediate and advanced RAG each use their own `.venv` inside their folder. In VS Code, open the project root and select the matching RAG configuration in Run and Debug. The local `.vscode` configurations are ignored by Git.
+
+- [Basic RAG](rag/basic_rag/): the original `rag` lessons, renamed to `basic_rag`.
+- [Intermediate RAG](rag/intermediate_rag/README.md): the original `semantic_rag` lessons, renamed to `intermediate_rag`; semantic embeddings and chunk comparisons.
+- [Advanced RAG](rag/advanced_rag/README.md): 100-page PDF, layout extraction, hybrid BM25/pgvector search, parent-child retrieval, and evaluations.
+- [LLM evaluations](llm/README.md): unchanged standalone evaluation lessons.
+
+See the advanced guide for its Docker and Python setup. The rest of this README describes the basic lessons.
+
+
+The `rag/basic_rag` folder contains the RAG lessons below. The new [LLM evaluation guide](llm/README.md) explains how to run prompts against local Ollama, grade answers, and save reports.
 
 ```powershell
 python llm/01_evaluate_llm.py --dry-run
@@ -29,9 +51,9 @@ This first version uses **word-count vectors**, not semantic embeddings. Each ve
 
 - Python 3. The examples have been run with Python 3.13.
 - No additional Python packages or API key are needed.
-- For answer generation, [Ollama](https://ollama.com/) must be running with the default model, `qwen3.5:4b`, available locally. The other numbered lessons do not need Ollama.
+- For answer generation, [Ollama](https://ollama.com/) must be running with the default model, `qwen3:1.7b`, available locally. The other numbered lessons do not need Ollama.
 
-Run the commands below from the project root, the folder containing this README and `rag`.
+Run the commands below from the project root, the folder containing this README and the `rag` folder.
 
 On Windows PowerShell, enable UTF-8 for the current terminal session so the document's rupee symbol prints correctly, including in lesson 1:
 
@@ -55,26 +77,26 @@ Each numbered file is a small lesson. Read its opening explanation, run it, and 
 
 | Step | Python file | What you learn |
 | --- | --- | --- |
-| 1 | [01_load_text.py](rag/01_load_text.py) | Read a UTF-8 text document into a Python string. |
-| 2 | [02_split_text.py](rag/02_split_text.py) | Split the text at blank lines into paragraph chunks. |
-| 3 | [03_vectorize_text.py](rag/03_vectorize_text.py) | Count words in each chunk to create vectors. |
-| 4 | [04_store_vectors.py](rag/04_store_vectors.py) | Save chunk IDs, sources, text, and vectors as JSON. |
-| 5 | [05_vectorize_question.py](rag/05_vectorize_question.py) | Represent a question using the same word-count method. |
-| 6 | [06_retrieve_chunks.py](rag/06_retrieve_chunks.py) | Score stored chunks and select the closest matches. |
-| 7 | [07_build_prompt.py](rag/07_build_prompt.py) | Combine instructions, retrieved context, and the question. |
-| 8 | [08_generate_answer.py](rag/08_generate_answer.py) | Send the saved prompt to Ollama and print its answer. |
-| 9 | [09_evaluate_retrieval.py](rag/09_evaluate_retrieval.py) | Compare retrieval results with expected evidence. |
+| 1 | [01_load_text.py](rag/basic_rag/01_load_text.py) | Read a UTF-8 text document into a Python string. |
+| 2 | [02_split_text.py](rag/basic_rag/02_split_text.py) | Split the text at blank lines into paragraph chunks. |
+| 3 | [03_vectorize_text.py](rag/basic_rag/03_vectorize_text.py) | Count words in each chunk to create vectors. |
+| 4 | [04_store_vectors.py](rag/basic_rag/04_store_vectors.py) | Save chunk IDs, sources, text, and vectors as JSON. |
+| 5 | [05_vectorize_question.py](rag/basic_rag/05_vectorize_question.py) | Represent a question using the same word-count method. |
+| 6 | [06_retrieve_chunks.py](rag/basic_rag/06_retrieve_chunks.py) | Score stored chunks and select the closest matches. |
+| 7 | [07_build_prompt.py](rag/basic_rag/07_build_prompt.py) | Combine instructions, retrieved context, and the question. |
+| 8 | [08_generate_answer.py](rag/basic_rag/08_generate_answer.py) | Send the saved prompt to Ollama and print its answer. |
+| 9 | [09_evaluate_retrieval.py](rag/basic_rag/09_evaluate_retrieval.py) | Compare retrieval results with expected evidence. |
 
 ```powershell
-python rag/01_load_text.py
-python rag/02_split_text.py
-python rag/03_vectorize_text.py
-python rag/04_store_vectors.py
-python rag/05_vectorize_question.py
-python rag/06_retrieve_chunks.py
-python rag/07_build_prompt.py
-python rag/08_generate_answer.py
-python rag/09_evaluate_retrieval.py
+python rag/basic_rag/01_load_text.py
+python rag/basic_rag/02_split_text.py
+python rag/basic_rag/03_vectorize_text.py
+python rag/basic_rag/04_store_vectors.py
+python rag/basic_rag/05_vectorize_question.py
+python rag/basic_rag/06_retrieve_chunks.py
+python rag/basic_rag/07_build_prompt.py
+python rag/basic_rag/08_generate_answer.py
+python rag/basic_rag/09_evaluate_retrieval.py
 ```
 
 Steps 1–3 and 5 print intermediate results for learning. Step 4 repeats document preparation and saves the store. Step 7 loads that store, repeats retrieval, and saves the prompt. Step 8 uses the saved prompt exactly as it is.
@@ -84,9 +106,9 @@ Steps 1–3 and 5 print intermediate results for learning. Step 4 repeats docume
 With Ollama running and the default model available:
 
 ```powershell
-python rag/04_store_vectors.py
-python rag/07_build_prompt.py --question "What is the refund policy?"
-python rag/08_generate_answer.py
+python rag/basic_rag/04_store_vectors.py
+python rag/basic_rag/07_build_prompt.py --question "What is the refund policy?"
+python rag/basic_rag/08_generate_answer.py
 ```
 
 The sample document says refunds can be requested within 30 days, with an unused item and a receipt. Check that the generated answer agrees with the retrieved text and cites a supporting chunk. Wording may vary.
@@ -94,26 +116,26 @@ The sample document says refunds can be requested within 30 days, with an unused
 For another question, rebuild the prompt and generate again:
 
 ```powershell
-python rag/07_build_prompt.py --question "How long does delivery take?" --top-k 1
-python rag/08_generate_answer.py
+python rag/basic_rag/07_build_prompt.py --question "How long does delivery take?" --top-k 1
+python rag/basic_rag/08_generate_answer.py
 ```
 
-`--top-k 1` selects at most one matching chunk; the default is two. Zero-score chunks are excluded. To select another installed model, use `--model MODEL_NAME` with step 8. The generation settings were tested with `qwen3.5:4b`; another model may need different settings.
+`--top-k 1` selects at most one matching chunk; the default is two. Zero-score chunks are excluded. To select another installed model, use `--model MODEL_NAME` with step 8. The generation settings were tested with `qwen3:1.7b`; another model may need different settings.
 
 ## Understand the files and refresh order
 
 | File | Purpose | When it changes |
 | --- | --- | --- |
-| [sample_document.txt](rag/sample_document.txt) | Fictional shop policies used as source text. | Edit this to practice with different information. |
-| [chunk_store.json](rag/chunk_store.json) | Saved chunks and word-count vectors. | Step 4 replaces it using the current source document. |
-| [rag_prompt.txt](rag/rag_prompt.txt) | Instructions, retrieved context, and the current question. | Step 7 replaces it for the question you provide. |
+| [sample_document.txt](rag/basic_rag/sample_document.txt) | Fictional shop policies used as source text. | Edit this to practice with different information. |
+| [chunk_store.json](rag/basic_rag/chunk_store.json) | Saved chunks and word-count vectors. | Step 4 replaces it using the current source document. |
+| [rag_prompt.txt](rag/basic_rag/rag_prompt.txt) | Instructions, retrieved context, and the current question. | Step 7 replaces it for the question you provide. |
 
 After editing the source document, run **step 4 -> step 7 -> step 8**. For just a new question, run **step 7 -> step 8**. Running step 8 alone answers the question already stored in the prompt file.
 
 ## Evaluate and practice
 
 ```powershell
-python rag/09_evaluate_retrieval.py
+python rag/basic_rag/09_evaluate_retrieval.py
 ```
 
 The evaluation reuses step 7's retrieval function and checks the highest-scoring result against acceptable chunk IDs. It does not call Ollama or grade generated answers.
@@ -130,12 +152,12 @@ Try these exercises:
 
 ## Standalone overview
 
-[simple_rag.py](rag/simple_rag.py) demonstrates the whole flow in one file:
+[simple_rag.py](rag/basic_rag/simple_rag.py) demonstrates the whole flow in one file:
 
 ```powershell
-python rag/simple_rag.py --retrieve-only
-python rag/simple_rag.py --step
-python rag/simple_rag.py --question "What is the refund policy?"
+python rag/basic_rag/simple_rag.py --retrieve-only
+python rag/basic_rag/simple_rag.py --step
+python rag/basic_rag/simple_rag.py --question "What is the refund policy?"
 ```
 
 This overview uses its own embedded sample text and removes some common words during retrieval. It does not read the numbered lessons' document, chunk store, or saved prompt, so its results can differ.

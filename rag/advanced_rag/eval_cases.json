@@ -1,0 +1,12 @@
+[
+  {"question":"Can I return an unused item twelve days after buying it?", "pages":[1,2]},
+  {"question":"How long is return authorization valid?", "pages":[3,4]},
+  {"question":"Who pays return postage for an incorrect item?", "pages":[7,8]},
+  {"question":"How long does standard delivery take after dispatch?", "pages":[21,22]},
+  {"question":"What minimum purchase qualifies for free delivery?", "pages":[25,26]},
+  {"question":"How long does international delivery take?", "pages":[37,38]},
+  {"question":"Can I apply a discount code after payment?", "pages":[49,50]},
+  {"question":"How long does the manufacturing defect warranty last?", "pages":[75,76]},
+  {"question":"When is customer support available?", "pages":[83,84]},
+  {"question":"What happens to business day calculations on October 2?", "pages":[99,100]}
+]

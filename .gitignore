@@ -14,6 +14,7 @@ venv/
 .idea/
 .DS_Store
 Thumbs.db
+*.stackdump
 
 # Local LLM evaluation reports
 llm/results/

@@ -1,0 +1,6 @@
+# Rebuild this local artifact with lesson 1.
+embedding_store.json
+embedding_store_*.json
+__pycache__/
+.venv/
+tmp/

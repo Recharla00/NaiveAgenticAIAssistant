@@ -10,7 +10,7 @@ This folder evaluates generated answers. The existing `rag/09_evaluate_retrieval
 
 ## Start with one case
 
-Use the same Python and Ollama setup as the RAG lessons. No extra Python packages or API key are required. The default model is `qwen3.5:4b`.
+Use the same Python and Ollama setup as the RAG lessons. No extra Python packages or API key are required. The default model is `qwen3:1.7b`.
 
 Run from the project root:
 
@@ -33,8 +33,8 @@ Use `--model MODEL_NAME` to select another installed model. Requests run one at 
 
 Edit [eval_cases.json](eval_cases.json) to add examples.
 
-| Case | What it checks | Expected answer |
-| --- | --- | --- |
+| Case              | What it checks | Expected answer |
+| ---                | --- | --- |
 | `arithmetic` | Basic correctness | `5` |
 | `sentiment` | Follow a classification instruction | `positive` |
 | `context_answer` | Read a fact from supplied context | `30` |

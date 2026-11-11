@@ -1,0 +1,6 @@
+# Framework and local Ollama provider; keep within the current major versions.
+langchain>=1.0,<2.0
+langchain-ollama>=1.0,<2.0
+langchain-chroma>=1.0,<2.0
+langchain-text-splitters>=1.0,<2.0
+pypdf>=6,<7

@@ -1,0 +1,2 @@
+pypdf>=5,<7
+langchain-text-splitters>=1,<2

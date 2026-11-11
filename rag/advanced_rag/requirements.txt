@@ -1,0 +1,7 @@
+reportlab>=4,<5
+pdfplumber>=0.11,<0.12
+pypdf>=6,<7
+langchain-text-splitters>=1,<2
+psycopg[binary]>=3.2,<4
+python-dotenv>=1,<2
+pillow>=11,<14

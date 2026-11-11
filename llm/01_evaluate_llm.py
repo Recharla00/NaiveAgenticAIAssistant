@@ -88,7 +88,7 @@ def generate_answer(prompt, model):
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Evaluate local LLM answers with simple checks.")
-    parser.add_argument("--model", default="qwen3.5:4b")
+    parser.add_argument("--model", default="qwen3:1.7b")
     parser.add_argument("--case", help="Run only the case with this ID.")
     parser.add_argument("--dry-run", action="store_true", help="Print cases without calling Ollama.")
     args = parser.parse_args()
@@ -96,6 +96,9 @@ def main():
 
     # 1. Load and validate our small dataset BEFORE sending requests.
     cases = json.loads((folder / "eval_cases.json").read_text(encoding="utf-8"))
+    print(f"Loaded {len(cases)} evaluation case(s) from eval_cases.json.")
+    print("Case IDs:", ", ".join(case["id"] for case in cases))
+    print("Check types:", ", ".join(sorted(set(case["check"] for case in cases))))
     seen_ids = set()
     for case in cases:
         if not case.get("id") or case["id"] in seen_ids:
@@ -107,6 +110,10 @@ def main():
             parser.error(f"Case {case['id']} needs a supported check and an expected answer.")
         if case["check"] == "exact" and not isinstance(case["expected"], str):
             parser.error(f"Case {case['id']}: exact checks require a string expected answer.")
+    print("All cases validated successfully.")
+    print("Model:", args.model)
+    print("Dry run:", args.dry_run)
+    print("Selected case:", args.case if args.case else "(all cases)")
     if args.case:
         cases = [case for case in cases if case["id"] == args.case]
     if not cases:
@@ -123,6 +130,7 @@ def main():
         print(f"\nRunning {case['id']} with {args.model}...", flush=True)
         start = time.perf_counter()
         record = {**case, "answer": None, "status": "error", "reason": ""}
+        print("record:", record)
         try:
             record["answer"] = generate_answer(case["prompt"], args.model)
             passed, record["reason"] = grade_answer(record["answer"], case)
